@@ -2,6 +2,7 @@ setwd("C:/Users/user/Dropbox/R_project/alcohol/data")
 alcohol_data <- get_alcohol_data()
 save(alcohol_data, file = "alcohol_data.rda")
 readr::write_csv(alcohol_data, path = "alcohol_data.csv")
+haven::write_dta(alcohol_data, path = "alcohol_data.dta")
 
 get_alcohol_data <- function() {
   setwd("C:/Users/user/Dropbox/R_project/alcohol/data")
