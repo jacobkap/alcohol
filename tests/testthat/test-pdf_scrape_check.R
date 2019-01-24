@@ -1,13 +1,13 @@
 context("pdf_scrape_check")
 
 data     <- get_alcohol_data()
-cali     <- data[data$location == "california",]
-delaware <- data[data$location == "delaware",]
-hawaii   <- data[data$location == "hawaii",]
-penn     <- data[data$location == "pennsylvania",]
-texas    <- data[data$location == "texas",]
-utah     <- data[data$location == "utah",]
-usa      <- data[data$location == "us total",]
+cali     <- data[data$state == "california",]
+delaware <- data[data$state == "delaware",]
+hawaii   <- data[data$state == "hawaii",]
+penn     <- data[data$state == "pennsylvania",]
+texas    <- data[data$state == "texas",]
+utah     <- data[data$state == "utah",]
+usa      <- data[data$state == "us total",]
 
 test_that("beer consumption", {
   expect_equal(head(data$ethanol_beer_gallons_per_capita), c(1.09, 1.11, 1.13,
