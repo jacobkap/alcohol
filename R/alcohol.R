@@ -1,15 +1,16 @@
-# setwd("C:/Users/user/Dropbox/R_project/alcohol/data")
-# apparent_per_capita_alcohol_consumption <- get_alcohol_data()
-# save(apparent_per_capita_alcohol_consumption,
-#      file = "apparent_per_capita_alcohol_consumption.rda")
-# readr::write_csv(apparent_per_capita_alcohol_consumption,
-#                  path = "apparent_per_capita_alcohol_consumption.csv")
-# haven::write_dta(apparent_per_capita_alcohol_consumption,
-#                  path = "apparent_per_capita_alcohol_consumption.dta")
+setwd(here::here("data"))
+library(dplyr)
+apparent_per_capita_alcohol_consumption <- get_alcohol_data()
+save(apparent_per_capita_alcohol_consumption,
+     file = "apparent_per_capita_alcohol_consumption.rda")
+readr::write_csv(apparent_per_capita_alcohol_consumption,
+                 path = "apparent_per_capita_alcohol_consumption.csv")
+haven::write_dta(apparent_per_capita_alcohol_consumption,
+                 path = "apparent_per_capita_alcohol_consumption.dta")
 
 get_alcohol_data <- function() {
-  setwd("C:/Users/user/Dropbox/R_project/alcohol/data")
-  data <- pdftools::pdf_text("surveillance_report_110.pdf")
+  setwd(here::here("data"))
+  data <- pdftools::pdf_text("surveillance_report_113.pdf")
   data <- unlist(strsplit(data, split = "\n"))
   data <- trimws(data)
   data <- tolower(data)
