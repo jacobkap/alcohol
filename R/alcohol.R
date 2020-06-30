@@ -1,16 +1,16 @@
 setwd(here::here("data"))
 library(dplyr)
-apparent_per_capita_alcohol_consumption <- get_alcohol_data()
-save(apparent_per_capita_alcohol_consumption,
-     file = "apparent_per_capita_alcohol_consumption.rda")
-readr::write_csv(apparent_per_capita_alcohol_consumption,
-                 path = "apparent_per_capita_alcohol_consumption.csv")
-haven::write_dta(apparent_per_capita_alcohol_consumption,
-                 path = "apparent_per_capita_alcohol_consumption.dta")
+apparent_per_capita_alcohol_consumption_1977_2018 <- get_alcohol_data()
+save(apparent_per_capita_alcohol_consumption_1977_2018,
+     file = "apparent_per_capita_alcohol_consumption_1977_2018.rda")
+readr::write_csv(apparent_per_capita_alcohol_consumption_1977_2018,
+                 path = "apparent_per_capita_alcohol_consumption_1977_2018.csv")
+haven::write_dta(apparent_per_capita_alcohol_consumption_1977_2018,
+                 path = "apparent_per_capita_alcohol_consumption_1977_2018.dta")
 
 get_alcohol_data <- function() {
   setwd(here::here("data"))
-  data <- pdftools::pdf_text("surveillance_report_113.pdf")
+  data <- pdftools::pdf_text("surveillance_report_115.pdf")
   data <- unlist(strsplit(data, split = "\n"))
   data <- trimws(data)
   data <- tolower(data)
@@ -66,9 +66,6 @@ get_alcohol_data <- function() {
       # 1.5 ounces per shot.
       number_of_shots_liquor = ethanol_spirit_gallons_per_capita / 0.411 * 128 / 1.5,
       number_of_drinks_total = ethanol_all_drinks_gallons_per_capita * 128 / 0.6)
-
-
-
 
   return(data)
 
